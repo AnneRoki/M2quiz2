@@ -2,99 +2,114 @@
 <html>
 
 <head>
-    <title> BMI and Calorie Tracker</title>
-    <link rel="stylesheet" href="style.css" type="text/css">
+    <title>Bmi and Calorie Tracker</title>
+    <link  rel="stylesheet" href="Style.css" type="text/css">
 </head>
 
 <body>
     <div class="header">
-        <h1>TRack my Calories!</h1>
+        <h1>Calorie Tracker</h1>
+        <p>Go and calculate Calories!!!</p>
     </div>
+</body>
+<main>
+    
+        <table>
+            <form>
+                <tr>
+                    <td>Age :</td>
+                    <td><input type="number" min="0" id="age" style="margin: 20px; border-color:orange">
+                        <div style="display: none;"></div>
+                    </td>
+                    <td>Gender :</td>
+                    <td>
+                        <input type="radio" name="gender" value="male" id="male" checked="checked"> Male &nbsp &nbsp
+                        <input type="radio" name="gender" value="female" id="female"> Female
+                    </td>
+                </tr>
+                <tr>
+                    <td>Weight :</td>
+                    <td><input type="number" min="0" id="weight" placeholder="kg"
+                            style="margin: 20px; border-color: orange;">
+                        <div style="display: none;"></div>
+                    </td>
+                    <td>Height :</td>
+                    <td><input type="number" min="0" id="height" placeholder="cm"
+                            style="margin: 20px; border-color: orange;">
+                        <div style="display: none;"></div>
+                    </td>
+                </tr>
+            </form>
+            <tr>
+                <td>Activity :</td>
+                <td>
+                    <select style="width: 70%; margin: 20px; border-color: orange;">
+                        <option value="1" id="1">Basal Metabolic Rate (BMR)</option>
+                        <option value="2" id="2">Sedentary: Little/No exercise</option>
+                        <option value="3" id="3">Light: exercise 1-3 times/week</option>
+                        <option value="4" id="4">Active: daily exercise or intense exercise 3-4 times/week</option>
+                        <option value="5" id="5">Very Active: intense exercise 6-7 times/week</option>
+                        <option value="6" id="6">Extra active: very intense exercise daily, or physical job</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    
 
-    <table>
-        <tr>
-            <td>Age :
-            </td>
-            <td><input type='number' min='0' id='age'>
-                <div style='display: none;'></div>
-            </td>
-        </tr>
-        <tr>
-            <td>Gender :</td>
-            <td>
-                <input type='radio' name='gender' value='male' id='male'> Male &nbsp &nbsp
-                <input type='radio' name='gender' value='female' id='female'> Female
-            </td>
-        </tr>
-        <tr>
-            <td>Height :</td>
-            <td><input type='number' min='0' id='height' placeholder='cm' style='margin: 20px; '>
-                <div style='display: none;'></div>
-            </td>
-        </tr>
-        <tr>
-            <td>Weight :</td>
-            <td><input type='number' min='0' id='weight' placeholder='kg' style='margin: 20px; '>
-                <div style='display: none;'></div>
-            </td>
-        </tr>
-        <tr>
-            <td>Activity :</td>
-            <td>
-                <select style='width: 70%; margin: 20px; border-color: rgb(0, 153, 140);'>
-                    <option value='1' id='1'>Basal Metabolic Rate (BMR)</option>
-                    <option value='2' id='1'>Sedentary: Little/No exercise</option>
-                    <option value='3' id='3'>Light: exercise 1-3 times/week</option>
-                    <option value='4' id='4'>Active: daily exercise or intense exercise 3-4 times/week</option>
-                    <option value='5' id='5'>Very Active: intense exercise 6-7 times/week</option>
-                    <option value='6' id='6'>Extra active: very intense exercise daily, or physical job</option>
-                </select>
-            </td>
-        </tr>
-
-
-    </table>
-    <button onclick="Total()" class="button">Calculate</button>
-    <table>
-        <tr>
-            <div id=totalbox class='totalbx' style='display: none;'>
-
-            </div>
-        </tr>
-    </table>
-
-    <div class="header">
-        <h1>Calorie Intake Traker</h1>
+    <button onclick="Total()" class="button">Calculate</button><br />
     </div>
-    <table>
+    <div id="result" style="display: none;">
         <tr>
-            <td>Name of the food :</td>
-            <td><input type="number" min="0" id="cal" style="margin: 20px;">
-                <div style="display: none;"></div>
-            </td>
+                <div id="mw"></div>
+            
+            
+                <p>Calories Required</p>          
         </tr>
-        <tr>
-            <td>Calories of the food :</td>
-            <td><input type="number" min="0" id="cal" style="margin: 20px;">
-                <div style="display: none;"></div>
-            </td>
-            </td>
-        </tr>
+    </div>
+    <script src="scripts.js"></script>
+</main>
 
-    </table>
-    <table>
-        <tr>
-            <button onclick="intakes()" class="button buttons">Submit</button>
-            <div id="lBox" style="display: none;">
-
-                <div id="fCal"></div>
-                <p>Calories</p>
-
-            </div>
-        </tr>
-    </table>
-    <script src='script.js'></script>
+<body>
+    <main>
+        <div class="headers">
+            <h1>Calculate your calories</h1>
+        </div>
+        
+            <table>
+                <form>
+                    <tr>
+                        <h3>Alloted Calorie per day : 2000</h3>
+                    </tr>
+                    <tr>
+                        <td>The desired food</td>
+                        <td><input type="text" id="food" name="food"
+                                style="margin: 20px; border-color: orange;">
+                            <div style="display: none;"></div>
+                        </td>
+                        <td>The calories it contain</td>
+                        <td><input type="number" min="0" id="cal"
+                                style="margin: 20px; border-color: orange;">
+                            <div style="display: none;"></div>
+                        </td>
+                    </tr>
+                </form>
+            </table>
+        
+        <button onclick="intakes()" class="button">CALCULATE!!!</button><br />
+        <div id="con" style="display: none;">
+            <tr>
+                
+                    <div id="totcal"></div>
+                
+                
+                    <p>Calories left</p>
+                
+            </tr>
+        </div>
+        <script src="script.js"></script>
+    </main>
 </body>
 
+</body>
 
 </html>
